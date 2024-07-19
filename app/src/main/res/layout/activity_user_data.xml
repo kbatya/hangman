@@ -28,7 +28,7 @@
         android:textColor="@color/white"
         android:textSize="30dp"
         android:padding="10dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="200dp"
         android:hint="Enter your name"
         android:textColorHint="@color/white"/>
 
@@ -43,7 +43,14 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:inputType="textPassword" />
-
+    <CheckBox
+        android:id="@+id/cbAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:hint="User with admin rights"
+        android:text="Admin" />
     <Button
         android:id="@+id/bGo"
         android:layout_width="200dp"

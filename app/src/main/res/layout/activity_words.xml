@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30sp"
+    android:background="#F7F3E7"
+    android:gravity="center_horizontal"
+    tools:context=".WordsActivity">
+
+    <EditText
+        android:id="@+id/etWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:inputType="text"
+        android:background="#FFFFFF"
+        android:padding="7dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Word" />
+
+    <EditText
+        android:id="@+id/etHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:background="#FFFFFF"
+        android:padding="7dp"
+        android:layout_marginBottom="20dp"
+        android:inputType="text"
+        android:hint="Hint" />
+
+    <Spinner
+        android:id="@+id/sCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:background="#FFFFFF"
+        android:padding="7dp"
+        android:layout_marginBottom="20dp"
+        />
+    <RadioGroup
+        android:id="@+id/rgLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RadioButton
+            android:id="@+id/rbLevel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hard"
+            />
+
+        <RadioButton
+            android:id="@+id/rbLevel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="medium" />
+
+        <RadioButton
+            android:id="@+id/rbLevel3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="easy" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/bAdd"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:padding="10sp"
+        android:hint="add new word to database"
+        android:text="Add" />
+    <Button
+        android:id="@+id/bShow"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:padding="10sp"
+        android:hint="show all words from database"
+        android:text="Show" />
+    <Button
+        android:id="@+id/bBack"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:textSize="20dp"
+        android:layout_marginTop="50sp"
+        android:backgroundTint="@color/black"
+        android:text="Back"
+        android:textStyle="bold"/>
+</LinearLayout>

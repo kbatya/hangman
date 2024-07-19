@@ -7,11 +7,14 @@ import java.util.Objects;
 public class User {
     private String userName;
     private String userPassword;
-
-    public User(String userName, String userPassword) {
+    private boolean isAdmin;
+    public User(String userName, String userPassword, boolean isAdmin) {
         this.userName = userName;
         this.userPassword = userPassword;
+        this.isAdmin = isAdmin;
     }
+    public boolean getIsAdmin() { return isAdmin; }
+    public void setIsAdmin(boolean isAdmin) { this.isAdmin = isAdmin; }
 
     public String getUserName() {
         return userName;

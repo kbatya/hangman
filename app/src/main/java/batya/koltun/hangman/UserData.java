@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Context;
@@ -16,13 +17,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UserData extends AppCompatActivity {
     Button bGo;
-    EditText eName;
-    EditText ePassword;
+    EditText eName,ePassword;;
+    CheckBox cbAdmin;
     User user;
     Context context;
     private static final String PREFS_NAME = "shPrefCredentials";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
+    private static final String KEY_ADMIN_USERNAME = "admin_username";
+    private static final String KEY_ADMIN_PASSWORD = "admin_password";
 
     private SharedPreferences sharedPreferences;
     @Override
@@ -42,15 +45,35 @@ public class UserData extends AppCompatActivity {
     private void insertIntoSharedPreferences    (User user)
     {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(KEY_USERNAME, user.getUserName());
-        editor.putString(KEY_PASSWORD, user.getUserPassword());
-        editor.apply();
+        String username_key, password_key;
+        if (user.getIsAdmin()) {
+            username_key = KEY_ADMIN_USERNAME;
+            password_key = KEY_ADMIN_PASSWORD;
+        }
 
+        else {
+            username_key = KEY_USERNAME;
+            password_key = KEY_PASSWORD;
+        }
+        editor.putString(username_key, user.getUserName());
+        editor.putString(password_key, user.getUserPassword());
+        editor.apply();
     }
 
     private User RetrieveFromSharedPreferences(User user)
     {
-        User fspUser = new User(sharedPreferences.getString(KEY_USERNAME, ""),sharedPreferences.getString(KEY_PASSWORD, ""));
+        String username_key, password_key;
+        if (user.getIsAdmin()) {
+            username_key = KEY_ADMIN_USERNAME;
+            password_key = KEY_ADMIN_PASSWORD;
+
+        }
+
+        else {
+            username_key = KEY_USERNAME;
+            password_key = KEY_PASSWORD;
+        }
+        User fspUser = new User(sharedPreferences.getString(username_key, ""),sharedPreferences.getString(password_key, ""),user.getIsAdmin());
         if (fspUser.getUserName().isEmpty()) {
             insertIntoSharedPreferences(user);
             return user;
@@ -64,7 +87,7 @@ public class UserData extends AppCompatActivity {
     // if exists then checks the password
     // if correct then gos to next activity with username as a parameter
     private void is_Login(User user) {
-        user = new User(eName.getText().toString(), ePassword.getText().toString());
+        user = new User(eName.getText().toString().trim(), ePassword.getText().toString().trim(), cbAdmin.isChecked());
         if (user.getUserName().isEmpty() ) {
             eName.setError("Enter your name");
             return;
@@ -72,7 +95,8 @@ public class UserData extends AppCompatActivity {
         if (user.getUserPassword().isEmpty()) {
             ePassword.setError("Enter your password");
             return;
-        }        User fspUser = RetrieveFromSharedPreferences(user);
+        }
+        User fspUser = RetrieveFromSharedPreferences(user);
 
         if (!user.equals(fspUser)) {
             Toast.makeText(context, "Username or password is incorrect", Toast.LENGTH_SHORT).show();
@@ -80,13 +104,14 @@ public class UserData extends AppCompatActivity {
         }
         else
         {
-
-              Intent go = new Intent(context, SelectCategory.class);
-
-            go.putExtra("name", user.getUserName());
-
+            Intent go;
+            if (fspUser.getIsAdmin())
+                go = new Intent(context, ShowWords.class);
+            else {
+                 go = new Intent(context, SelectCategory.class);
+                 go.putExtra("name", user.getUserName());
+            }
             startActivity(go);
-
         }
     }
 
@@ -96,6 +121,7 @@ public class UserData extends AppCompatActivity {
         context=this;
         eName=findViewById(R.id.eName);
         ePassword=findViewById(R.id.ePassword);
+        cbAdmin=findViewById(R.id.cbAdmin);
         bGo=findViewById(R.id.bGo);
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     }

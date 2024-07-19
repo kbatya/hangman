@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30sp"
+    android:background="#F7F3E7"
+    android:gravity="center"
+    tools:context=".ShowWords">
+    <Spinner
+        android:id="@+id/sCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:background="#FFFFFF"
+        android:padding="7dp"
+        android:layout_marginBottom="20dp"
+        />
+    <Button
+        android:id="@+id/bShow"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_marginBottom="30dp"
+        android:text="Show words by category" />
+
+    <Button
+        android:id="@+id/bAdd"
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_marginBottom="20dp"
+        android:text="Add new word" />
+
+    <ListView
+        android:id="@+id/lvWords"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
