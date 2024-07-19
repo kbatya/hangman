@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Hangman App</string>
+    <string-array name="categories">
+        <item>animals</item>
+        <item>countries</item>
+        <item>fruits</item>
+    </string-array>
+
+    <!-- Words for each category -->
+    <string-array name="animals">
+        <item>elephant</item>
+        <item>giraffe</item>
+        <item>penguin</item>
+    </string-array>
+
+    <string-array name="countries">
+        <item>brazil</item>
+        <item>japan</item>
+        <item>australia</item>
+    </string-array>
+
+    <string-array name="fruits">
+        <item>apple</item>
+        <item>banana</item>
+        <item>strawberry</item>
+    </string-array>
+
+</resources>

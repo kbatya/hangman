@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".SelectCategory">
+    <TextView
+    android:id="@+id/tvTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/black"
+    android:text="Welcome to Hangman App, choose a category to play!"
+    android:textSize="30dp"
+    android:padding="20dp"
+    />
+
+    <Spinner
+        android:id="@+id/sCategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"/>
+
+    <Button
+        android:id="@+id/bCategory"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Let's play!"
+        android:layout_marginTop="150dp"
+        />
+</LinearLayout>
